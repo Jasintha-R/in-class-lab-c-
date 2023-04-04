@@ -1,3 +1,8 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 100; // maximum size of the stack
+
 class Stack {
 private:
     int arr[MAX_SIZE];
