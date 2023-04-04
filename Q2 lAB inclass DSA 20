@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 100; // maximum size of the stack
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* top = nullptr; // global top pointer to represent the top of the stack
+
+void push(int x) {
+    Node* newNode = new Node();
+    newNode->data = x;
+    newNode->next = top;
+    top = newNode;
+    cout << "Pushed element: " << x << endl;
+}
+
+void pop() {
+    if (top == nullptr) { // check for stack underflow
+        cout << "Stack underflow!" << endl;
+        return;
+    }
+    Node* popped = top;
+    top = top->next;
+    int data = popped->data;
+    delete popped;
+    cout << "Popped element: " << data << endl;
+}
+
+int stackTop() {
+    if (top == nullptr) { // check for stack underflow
+        cout << "Stack is empty!" << endl;
+        return -1;
+    }
+    return top->data; // return the top element
+}
+
+bool isEmpty() {
+    return (top == nullptr); // check if the stack is empty
+}
+
+void display() {
+    if (top == nullptr) { // check for stack underflow
+        cout << "Stack is empty!" << endl;
+        return;
+    }
+    cout << "Stack elements:" << endl;
+    Node* temp = top;
+    while (temp != nullptr) {
+        cout << temp->data << endl;
+        temp = temp->next;
+    }
+}
+
+int main() {
+    push(5);
+    push(10);
+    push(15);
+    pop();
+    pop();
+    pop();
+    return 0;
+}
